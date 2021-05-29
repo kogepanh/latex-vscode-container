@@ -1,0 +1,87 @@
+%--------------------------------------------------------------------%
+%   nislab.sty
+%--------------------------------------------------------------------%
+%   Basic TeX Style File
+%   at Network Information Systems Laboratory, Doshisha Univ.
+%   Original version is designed by Hiroshi Hayakawa
+%   Copyright (C) Network Information Systems Laboratory,
+%                 Doshisha Univ. 2005-2006 All Rights Reserved.
+%--------------------------------------------------------------------%
+%   Change Logs
+%   Rev. 0.5.1 2006/02/26 Remove unnecessary parts
+%                                   Changed by Hiroshi Hayakawa
+%   Rev. 0.5.0 2005/08/11 Adopt PSNFSS package(times.sty, mathptm.sty)
+%                                   Changed by Hiroshi Hayakawa
+%   Rev. 0.4.1 2005/01/29 Move \figurename, \tablename
+%                         Delete ":" from captions
+%                                   Changed by Hiroshi Hayakawa
+%   Rev. 0.4.0 2005/01/25 Add \figref, \tabref
+%                         Remove \fgref, \tbref
+%                                   Changed by Hiroshi Hayakawa
+%   Rev. 0.3.0 2005/01/25 Modify styles
+%                                   Changed by Hiroshi Hayakawa
+%   Rev. 0.2.0 2005/01/19 Modify reference styles
+%                                   Changed by Hiroshi Hayakawa
+%   Rev. 0.1.? ????/??/?? Many updates
+%   Rev. 0.1.0 2005/01/08 First version
+%                                   Changed by Hiroshi Hayakawa
+%--------------------------------------------------------------------%
+
+%--------------------------------------------------------------------%
+%インクルードするパッケージ
+%--------------------------------------------------------------------%
+\usepackage{epsf}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{boxedminipage}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{ascmac}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{style/cite}
+
+\usepackage{times} 
+\usepackage[T1]{fontenc}
+\normalfont 
+\usepackage{mathptmx}
+
+
+%--------------------------------------------------------------------%
+%tabcaptionとfigcaptionの定義
+%--------------------------------------------------------------------%
+\def\tabcaption{\def\@captype{table}\caption}
+\def\figcaption{\def\@captype{figure}\caption}
+
+\def\term#1{
+	{\bf #1}
+}
+
+\def\path#1{
+	\texttt{#1}
+}
+
+%--------------------------------------------------------------------%
+%figref，tabref，eqrefを定義
+%--------------------------------------------------------------------%
+\def\figref#1{\figurename\hskip1ex \ref{#1}}
+\def\tabref#1{\tablename\hskip1ex \ref{#1}}
+\def\eqref#1{式(\ref{#1})}
+
+%--------------------------------------------------------------------%
+%キャプションの：を削除
+%cf. http://www.h4.dion.ne.jp/~latexcat/column/column2.html#figno
+%--------------------------------------------------------------------%
+\long\def\@makecaption#1#2{% #1: \fnum@figure/\fnum@table, #2: <caption>
+  \vskip\abovecaptionskip
+  \iftdir\sbox\@tempboxa{#1\hskip1zw#2}%
+    \else\sbox\@tempboxa{#1\hskip1zw #2}%
+  \fi
+  \ifdim \wd\@tempboxa >\hsize
+    \iftdir #1\hskip1zw#2\relax\par
+      \else #1\hskip1zw #2\relax\par\fi
+  \else
+    \global \@minipagefalse
+    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}

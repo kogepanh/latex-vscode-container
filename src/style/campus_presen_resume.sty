@@ -1,0 +1,186 @@
+%--------------------------------------------------------------------%
+%   campus_presen_resume.sty
+%--------------------------------------------------------------------%
+%   Style File for Campus Presentation Resume
+%   at Network Information Systems Laboratory, Doshisha Univ.
+%--------------------------------------------------------------------%
+%   Change Logs
+%   Rev. 0.3.4 2009/01/26 typeの修士論文指定時に動作しない問題を解決
+%                                   Changed by Kenta Ueda
+%   Rev. 0.3.3 2008/12/10 日付の記述方法の修正
+%                                   Changed by Kenta Ueda
+%   Rev. 0.3.2 2006/05/02 月例発表会追加（少し怪しい？）
+%                                   Changed by T.Koita
+%   Rev. 0.3.1 2006/01/24 タイトル上部の空白
+%                                   Changed by Hiroshi Hayakawa
+%   Rev. 0.3.0 2006/01/22 諮問会→試問会，SmallCaps
+%                                   Changed by Hiroshi Hayakawa
+%   Rev. 0.2.2 2005/02/20, Author: Hiroshi Hayakawa
+%--------------------------------------------------------------------%
+
+
+%--------------------------------------------------------------------%
+%インクルードするパッケージ
+%--------------------------------------------------------------------%
+\usepackage{style/nislab}
+
+%--------------------------------------------------------------------%
+%柱を出力しない
+%--------------------------------------------------------------------%
+\pagestyle{plain}
+
+%--------------------------------------------------------------------%
+%表紙
+%--------------------------------------------------------------------%
+\def\type#1{\gdef\@type{#1}}
+\def\year#1{\gdef\@year{#1}}
+\def\month#1{\gdef\@month{#1}}
+\def\date#1{\gdef\@date{#1}}
+
+%--------------------------------------------------------------------%
+%タイトル
+%--------------------------------------------------------------------%
+\def\maketitle#1#2#3#4{
+\twocolumn[
+	\vspace{-7mm}
+
+	\begin{center}
+
+	\newcount\year
+	\year = \@year
+	\ifnum\@month<3
+		\advance\year -1
+	\fi
+
+	\setlength{\baselineskip}{6.0pt}
+
+	\ifnum\@type=1
+		{\small{\bf {\the\year} 年度 修士論文試問会（{\@year}年{\@month}月{\@date}日）}}
+	\else
+		\ifnum\@type=2
+			{\small{\bf {\the\year} 年度 卒業論文発表会（{\@year}年{\@month}月{\@date}日）}}
+		\else
+			{\small{\bf {\the\year} 年度 月例発表会（{\@year}年{\@month}月{\@date}日）}}
+	\fi\fi
+	\hfill {\small{\bf ネットワーク情報システム研究室}}
+
+	\vspace{1mm}
+
+	\begin{picture}(525,3)
+		\put(0,2){\line(1,0){515}}
+	\end{picture}
+
+	\vspace{3mm}
+
+	{\bf {\Large {#1}}\\
+	\smallskip {#2}}\\ \bigskip
+
+	{\large {#3}}\\
+	\smallskip {\small {#4}}
+
+	\end{center}
+
+	\vspace{2mm}
+]
+}
+
+%--------------------------------------------------------------------%
+%キャプションの図をFig,表をTableに
+%--------------------------------------------------------------------%
+%\renewcommand{\figurename}{Fig.}
+%\renewcommand{\tablename}{Table}
+
+%--------------------------------------------------------------------%
+%図と本文の間隔
+%--------------------------------------------------------------------%
+% 図と図の間のスペース
+%\setlength\floatsep{0pt}
+% 本文と図の間のスペース
+\setlength\textfloatsep{10pt}
+% 本文中の図のスペース
+\setlength\intextsep{0pt}
+% 図とキャプションの間のスペース
+\setlength\abovecaptionskip{0pt}
+
+%--------------------------------------------------------------------%
+%キャプションの上下間隔
+%--------------------------------------------------------------------%
+%\abovecaptionskip = 10pt
+%\belowcaptionskip=-15pt
+
+%--------------------------------------------------------------------%
+%キャプションのサイズを小さく
+%--------------------------------------------------------------------%
+\long\def\@makecaption#1#2{{\small
+  \advance\leftskip1cm
+  \advance\rightskip1cm
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#1\hskip1zw\relax #2}%
+  \ifdim \wd\@tempboxa <\hsize \centering \fi
+  #1\hskip1zw\relax #2\par
+  \vskip\belowcaptionskip}}
+
+
+%--------------------------------------------------------------------%
+% ページのレイアウト
+%--------------------------------------------------------------------%
+\topmargin=-0.2cm
+\headheight=0cm
+\headsep=0cm  \footskip=0cm
+\oddsidemargin=-1.10cm  \evensidemargin=-0.85cm
+\textheight=26.3cm  \textwidth=18.1cm
+\footskip=1.0cm
+\columnsep=1.0cm
+\voffset=-1.0cm
+
+%--------------------------------------------------------------------%
+%sectionなどを省スペース化
+%--------------------------------------------------------------------%
+%section
+\renewcommand{\section}{
+	\@startsection{section}{1}{\z@}
+	{.5\Cvs \@plus.5\Cdp \@minus.2 \Cdp}
+	{.2\Cvs \@plus.3\Cdp}
+	{\reset@font\large\bfseries}}
+
+%subsectionの再定義
+\renewcommand{\subsection}{
+	\@startsection{subsection}{1}{\z@}
+	{.3\Cvs \@plus.5\Cdp \@minus.2 \Cdp}
+	{.2\Cvs \@plus.3\Cdp}
+	{\reset@font\bfseries}}
+
+\renewcommand{\subsubsection}{
+	\@startsection{subsubsection}{1}{\z@}
+	{.2\Cvs \@plus.5\Cdp \@minus.2 \Cdp}
+	{.1\Cvs \@plus.3\Cdp}
+	{\reset@font\bfseries}}
+
+%--------------------------------------------------------------------%
+%引用記号の再定義
+%--------------------------------------------------------------------%
+%LaTeX階梯　p.206
+%
+%\def\@biblabel#1{#1)}
+%\def\@cite#1#2{{$^{\mbox{\scriptsize $#1$}}$%
+%	\if@tempswa , #2\fi}$^{\mbox{\scriptsize $)$}}$ }
+%
+
+%--------------------------------------------------------------------%
+%概要
+%--------------------------------------------------------------------%
+\renewenvironment{abstract}{
+\begin{center}\begin{minipage}{14cm}{\bf Abstract:}\small
+}
+{\end{minipage}\end{center}}
+
+
+%--------------------------------------------------------------------%
+%参考文献・参考文献引用の表記を情処スタイルに
+%--------------------------------------------------------------------%
+%参考文献
+%\def\@biblabel#1{#1)}
+
+%参考文献引用
+%\def\@cite#1{\textsuperscript{#1)}}
+
