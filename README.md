@@ -1,4 +1,4 @@
-# <p align="center">LaTex for VS Code Remote - Container</p>
+<h1 align="center">LaTex for VS Code Remote - Container</h1>
 
 <p align="center">Visual Studio Code Remote - Containers を利用してローカル環境を汚さずに LaTex を使用するためのサンプルです</p>
 
@@ -50,8 +50,25 @@
 
 ## Options
 
-### コマンドでビルド
+### ホットリロードがウザイ人向け
+
+Tex ファイルが大きくなったきた時など、ホットリロードを止めたい人もいるかと思います。そういう人は `.vscode/settings.json` を以下のように編集してください。
+
+```settings.json
+-  "latex-workshop.latex.autoBuild.run": "onFileChange"
++  "latex-workshop.latex.autoBuild.run": "never",
+```
+
+### コマンドでビルドすることも可能です
 
 ```bash
 latexmk [filename].tex
 ```
+
+---
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+Copyright (c) 2021 kogepan
