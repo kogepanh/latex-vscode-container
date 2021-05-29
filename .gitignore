@@ -4,6 +4,6 @@
 *.fls
 *.synctex.gz
 *.log
-*.pdf
+*.out
 
 .DS_Store
