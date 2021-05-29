@@ -19,7 +19,6 @@
 
 下記のソフトウェアをインストールしてください。
 
-- git（なくてもなんとかなるが…笑）
 - Docker
 - Visual Studio Code
 - VS Code 拡張機能
