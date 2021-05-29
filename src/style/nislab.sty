@@ -76,7 +76,7 @@
 				\advance\year -1
 			\fi
 
-			\setlength{\baselineskip}{6.0pt}
+			\renewcommand{\baselinestretch}{0.8} % 行間の倍率指定
 
 			\ifnum\@type=1
 				{\small{\bf {\the\year} 年度 修士論文試問会（{\@year}年{\@month}月{\@date}日）}}
@@ -88,7 +88,7 @@
 			\fi\fi
 			\hfill {\small{\bf ネットワーク情報システム研究室}}
 
-			\vspace{1mm}
+			\vspace{-3mm}
 
 			% 横線
 			\begin{picture}(525,3)
@@ -97,12 +97,17 @@
 
 			\vspace{2mm}
 
-			\LARGE{#1} \\
-			\Large{#2} \\ \vspace{2mm}
-			\large{#3 / #4} \\
+			\LARGE{#1} \\ \vspace{2mm}
+			\Large{#2} \\ \vspace{4mm}
+			\large{#3 / #4} \\ \vspace{0mm}
+
+			% 横線
+			\begin{picture}(525,3)
+				\put(0,2){\line(1,0){515}}
+			\end{picture}
 
 		\end{center}
-		\vspace{5mm}
+		\vspace{2mm}
 	]
 }
 
@@ -111,14 +116,8 @@
 %--------------------------------------------------------------------%
 \def\tabcaption{\def\@captype{table}\caption}
 \def\figcaption{\def\@captype{figure}\caption}
-
-\def\term#1{
-	\bf{#1}
-}
-
-\def\path#1{
-	\texttt{#1}
-}
+\def\term#1{\bf{#1}}
+\def\path#1{\texttt{#1}}
 
 %--------------------------------------------------------------------%
 % figref，tabref，eqrefを定義
@@ -132,29 +131,12 @@
 %--------------------------------------------------------------------%
 \topmargin=-0.2cm
 \headheight=0cm
-\headsep=0cm  \footskip=0cm
-\oddsidemargin=-1.10cm  \evensidemargin=-0.85cm
-\textheight=26.3cm  \textwidth=18.1cm
+\headsep=0cm
+\footskip=0cm
+\oddsidemargin=-1.10cm
+\evensidemargin=-0.85cm
+\textheight=26.3cm
+\textwidth=18.1cm
 \footskip=1.0cm
 \columnsep=1.0cm
 \voffset=-1.0cm
-
-%--------------------------------------------------------------------%
-% sectionなどを省スペース化
-%--------------------------------------------------------------------%
-% section
-% \renewcommand{\section}{	% \newcommand から \renewcommand に変更すること
-% 	\@startsection{section}	% 区切りコマンドの名前（section, subsection等）
-% 	{1}											% 深さ(sectionが1, subsectionは2等）
-% 	{\z@}										% 左のインデント量
-% 	{.5\Cvs \@plus.5\Cdp \@minus.2 \Cdp}	% 前アキ 見出し上のスペース
-% 	{.2\Cvs \@plus.3\Cdp}									% 後アキ 見出し下のスペース 負にすると見出し後のスペース
-% 	{\reset@font\large\bfseries}}					% 見出しのフォント
-
-%--------------------------------------------------------------------%
-% 概要
-%--------------------------------------------------------------------%
-\renewenvironment{abstract}{
-\begin{center}\begin{minipage}{14cm}{\bf Abstract:}\small
-}
-{\end{minipage}\end{center}}
