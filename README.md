@@ -31,9 +31,11 @@
 
 1-1. `Use this template` からリポジトリを作成してください。
 
-    ![Use this template](https://user-images.githubusercontent.com/49851726/120323239-46418180-c320-11eb-9e46-a97217f18dc8.png)
+![Use this template](https://user-images.githubusercontent.com/49851726/120323239-46418180-c320-11eb-9e46-a97217f18dc8.png)
 
 1-2. `git clone [リポジトリのURL]` でプロジェクトをクローンしてください。
+
+![Clone repository](https://user-images.githubusercontent.com/49851726/120324086-2d859b80-c321-11eb-9a3b-96d863eadf12.png)
 
 ### 2. VS Codeで `latex-vscode-container` を開く
 
