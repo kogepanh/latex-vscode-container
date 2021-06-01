@@ -27,7 +27,13 @@
 
 ## 実行
 
-### 1. `git clone https://github.com/kogepanh/latex-vscode-container.git`
+### 1. リポジトリを作成＆クローン
+
+1-1. `Use this template` からリポジトリを作成してください。
+
+    ![Use this template](https://user-images.githubusercontent.com/49851726/120323239-46418180-c320-11eb-9e46-a97217f18dc8.png)
+
+1-2. `git clone [リポジトリのURL]` でプロジェクトをクローンしてください。
 
 ### 2. VS Codeで `latex-vscode-container` を開く
 
