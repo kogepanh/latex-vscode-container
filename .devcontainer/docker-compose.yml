@@ -5,7 +5,9 @@ services:
     # build: .
     command: sleep infinity
     volumes:
-      - ../:/workdir
+      - ../.devcontainer:/workdir/.devcontainer
+      - ../.vscode:/workdir/.vscode
+      - ../src:/workdir
       - ~/.gitconfig:/root/.gitconfig
       - ./.latexmkrc:/root/.latexmkrc
     environment:
