@@ -67,6 +67,12 @@ Tex ファイルが大きくなったきた時など、ホットリロードを�
 +  "latex-workshop.latex.autoBuild.run": "never",
 ```
 
+選択肢には以下の3通りがあります
+
+- `onFileChange` : 依存関係にあるファイルの変更を検知した時
+- `onSave` : tex ファイルを vscode で保存した時
+- `never` : ホットリロードしない
+
 ### コマンドでビルドすることも可能です
 
 ```bash
