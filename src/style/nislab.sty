@@ -5,6 +5,8 @@
 %   at Network Information Systems Laboratory, Doshisha Univ.
 %--------------------------------------------------------------------%
 %   Change Logs
+%   Rev. 0.4.1 2021/08/14 typeに研究室合同中間発表会を追加
+%                                   Changed by Koki Higashiyama
 %   Rev. 0.4.0 2021/06/01 スタイルの修正・リファクタリング・Docker環境の追加
 %                                   Changed by Kohei Hosono
 %   Rev. 0.3.4 2009/01/26 typeの修士論文指定時に動作しない問題を解決
@@ -82,12 +84,16 @@
 
 			\ifnum\@type=1
 				{\small{\bf {\the\year} 年度 修士論文試問会（{\@year}年{\@month}月{\@date}日）}}
-			\else
-				\ifnum\@type=2
-					{\small{\bf {\the\year} 年度 卒業論文発表会（{\@year}年{\@month}月{\@date}日）}}
-				\else
-					{\small{\bf {\the\year} 年度 月例発表会（{\@year}年{\@month}月{\@date}日）}}
-			\fi\fi
+			\fi
+			\ifnum\@type=2
+				{\small{\bf {\the\year} 年度 卒業論文発表会（{\@year}年{\@month}月{\@date}日）}}
+			\fi
+			\ifnum\@type=3
+				{\small{\bf {\the\year} 年度 月例発表会（{\@year}年{\@month}月{\@date}日）}}
+			\fi
+			\ifnum\@type=4
+				{\small{\bf {\the\year} 年度 研究室合同中間発表会（{\@year}年{\@month}月{\@date}日）}}
+			\fi
 			\hfill {\small{\bf ネットワーク情報システム研究室}}
 
 			\vspace{-3mm}
