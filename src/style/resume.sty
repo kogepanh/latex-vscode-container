@@ -1,0 +1,101 @@
+%--------------------------------------------------------------------%
+%   resume.sty
+%--------------------------------------------------------------------%
+%   Style File for Campus Presentation Resume
+%   at Network Information Systems Laboratory, Doshisha Univ.
+%--------------------------------------------------------------------%
+%   Change Logs
+%   Rev. 0.5.0 2021/09/22 論文用環境を追加・ファイルの整理
+%                                   Changed by Kohei Hosono
+%   Rev. 0.4.1 2021/08/14 typeに研究室合同中間発表会を追加
+%                                   Changed by Koki Higashiyama
+%   Rev. 0.4.0 2021/06/01 スタイルの修正・リファクタリング・Docker環境の追加
+%                                   Changed by Kohei Hosono
+%   Rev. 0.3.4 2009/01/26 typeの修士論文指定時に動作しない問題を解決
+%                                   Changed by Kenta Ueda
+%   Rev. 0.3.3 2008/12/10 日付の記述方法の修正
+%                                   Changed by Kenta Ueda
+%   Rev. 0.3.2 2006/05/02 月例発表会追加（少し怪しい？）
+%                                   Changed by T.Koita
+%   Rev. 0.3.1 2006/01/24 タイトル上部の空白
+%                                   Changed by Hiroshi Hayakawa
+%   Rev. 0.3.0 2006/01/22 諮問会→試問会，SmallCaps
+%                                   Changed by Hiroshi Hayakawa
+%   Rev. 0.2.2 2005/02/20, Author: Hiroshi Hayakawa
+%--------------------------------------------------------------------%
+
+%--------------------------------------------------------------------%
+% ページのレイアウト
+%--------------------------------------------------------------------%
+\topmargin=-0.2cm
+\headheight=0cm
+\headsep=0cm
+\footskip=0cm
+\oddsidemargin=-1.10cm
+\evensidemargin=-0.85cm
+\textheight=26.3cm
+\textwidth=18.1cm
+\footskip=1.0cm
+\columnsep=1.0cm
+\voffset=-1.0cm
+
+%--------------------------------------------------------------------%
+% 定義
+%--------------------------------------------------------------------%
+\def\type#1{\gdef\@type{#1}}
+\def\year#1{\gdef\@year{#1}}
+\def\month#1{\gdef\@month{#1}}
+\def\date#1{\gdef\@date{#1}}
+
+%--------------------------------------------------------------------%
+% タイトル
+%--------------------------------------------------------------------%
+\def\maketitle#1#2#3#4{
+	\twocolumn[
+		\vspace{-5mm}
+		\begin{center}
+
+			\newcount\year
+			\year = \@year
+			\ifnum\@month<3
+				\advance\year -1
+			\fi
+
+			\renewcommand{\baselinestretch}{0.8} % 行間の倍率指定
+
+			\ifnum\@type=1
+				{\small{\bf {\the\year} 年度 修士論文試問会（{\@year}年{\@month}月{\@date}日）}}
+			\fi
+			\ifnum\@type=2
+				{\small{\bf {\the\year} 年度 卒業論文発表会（{\@year}年{\@month}月{\@date}日）}}
+			\fi
+			\ifnum\@type=3
+				{\small{\bf {\the\year} 年度 月例発表会（{\@year}年{\@month}月{\@date}日）}}
+			\fi
+			\ifnum\@type=4
+				{\small{\bf {\the\year} 年度 研究室合同中間発表会（{\@year}年{\@month}月{\@date}日）}}
+			\fi
+			\hfill {\small{\bf ネットワーク情報システム研究室}}
+
+			\vspace{-3mm}
+
+			% 横線
+			\begin{picture}(525,3)
+				\put(0,2){\line(1,0){515}}
+			\end{picture}
+
+			\vspace{2mm}
+
+			\LARGE{#1} \\ \vspace{2mm}
+			\Large{#2} \\ \vspace{4mm}
+			\large{#3 / #4} \\ \vspace{0mm}
+
+			% 横線
+			% \begin{picture}(525,3)
+			% 	\put(0,2){\line(1,0){515}}
+			% \end{picture}
+
+		\end{center}
+		\vspace{4mm}
+	]
+}

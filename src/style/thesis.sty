@@ -1,0 +1,118 @@
+%--------------------------------------------------------------%
+%   thesis.sty										   %
+%--------------------------------------------------------------%
+%   Style File for Graduate Thesis             			       %
+%   at Network Information Systems Laboratory, Doshisha Univ.  %
+%--------------------------------------------------------------%
+%   Rev. 0.5.0 2021/09/22, Author: Kohei Hosono                %
+%   Rev. 0.4.6 2009/01/19, Author: Tomoaki Matsushita		   %
+%   Rev. 0.4.5 2009/01/19, Author: Kenta Ueda	       		   %
+%   Rev. 0.4.4 2008/12/17, Author: Kenta Ueda	       		   %
+%   Rev. 0.4.3 2005/02/10, Author: Hiroshi Hayakawa	       	   %
+%--------------------------------------------------------------%
+
+%--------------------------------------------------------------
+% ページレイアウトの定義
+%--------------------------------------------------------------
+\topmargin=-0.2cm
+\headheight=0cm
+\headsep=0cm  \footskip=0cm
+\oddsidemargin=-0.04cm \evensidemargin=-0.04cm
+\textheight=24.7cm  \textwidth=16.5cm
+\footskip=1cm
+\topmargin=-0.04cm
+
+%--------------------------------------------------------------
+% 表紙
+%--------------------------------------------------------------
+% 独自タグの設定
+\def\type#1{\gdef\@type{#1}}
+\def\etitle#1{\gdef\@etitle{#1}}
+\def\advisor#1{\gdef\@advisor{#1}}
+\def\university#1{\gdef\@university{#1}}
+\def\department#1{\gdef\@department{#1}}
+\def\lab#1{\gdef\@lab{#1}}
+\def\entryyear#1{\gdef\@entryyear{#1}}
+\def\studentnumber#1{\gdef\@studentnumber{#1}}
+
+% 表紙の定義
+\renewcommand\maketitle{
+  \thispagestyle{empty} % ページ番号，ヘッダ，フッタをつけない
+  \begin{center}
+    \vspace*{10mm}
+
+    \ifnum \@type=1 {\huge 卒業論文} \fi
+    \ifnum \@type=2 {\huge 修士論文} \fi \\ \vspace{32mm}
+
+    \begin{spacing}{1.6}
+      {\huge \@title} \\
+      {\LARGE \@etitle} \\ \vspace{50mm}
+    \end{spacing}
+
+    {\Large \@university \hspace{0.5zw} \@department} \\ \vspace{2mm}
+    {\Large \@entryyear 年度 \@studentnumber 番} \\ \vspace{3mm}
+
+    {\huge \@author} \\ \vspace{16mm}
+    {\large 指導教員} \\ \vspace{2mm}
+    {\large \@department} \\
+    {\large \@lab} \\ \vspace{3mm}
+    {\Large \@advisor} \\ \vspace{8mm}
+
+    {\large \@date}
+  \end{center}
+}
+
+%--------------------------------------------------------------
+% abstract の定義
+%--------------------------------------------------------------
+\renewenvironment{abstract}{
+  \thispagestyle{empty}
+  \bigskip
+  \begin{center}
+    \huge{\bfseries{
+      \ifnum \@type=1 概要 \fi
+      \ifnum \@type=2 Abstract \fi
+    }} \\ \vspace{10mm}
+  \end{center}
+}
+
+%--------------------------------------------------------------
+% addkeywords の定義 
+%--------------------------------------------------------------
+\def\addkeywords#1#2#3{
+  \vspace{10mm}
+  {\noindent \large{
+    \ifnum \@type=1 キーワード \fi
+    \ifnum \@type=2 Keywords \fi
+  } \\ \vspace{5mm}
+  1. #1, 2. #2, 3. #3
+  }
+}
+
+%--------------------------------------------------------------
+% 全体の行間を調整
+%--------------------------------------------------------------
+\renewcommand{\baselinestretch}{1.1}
+
+%--------------------------------------------------------------
+% フッターの独自記載機能を設定
+%--------------------------------------------------------------
+\renewcommand{\thefootnote}{\fnsymbol{footnote}} 
+
+%--------------------------------------------------------------
+% 目次の表示レベルを設定
+%--------------------------------------------------------------
+\setcounter{tocdepth}{2}  % subsectionまで
+
+%--------------------------------------------------------------
+% 図表数式番号を通し番号にする
+% ※ documentclass:jreport にしている場合，図表の番号が「章番号.章内の通し番号」になるため．
+%--------------------------------------------------------------
+\@removefromreset{figure}{chapter}
+\def\thefigure{\arabic{figure}}
+
+\@removefromreset{table}{chapter}
+\def\thetable{\arabic{table}}
+
+\@removefromreset{equation}{chapter}
+\def\theequation{\arabic{equation}}
