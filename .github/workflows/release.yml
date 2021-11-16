@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create tag
+        run: |
+          echo "$(TZ=Asia/Tokyo date +%Y-%m-%d %H%M%S)" > TAG_NAME
+          echo TAGNAME
+
+      # - name: Create issue
+      #   id: create-issue
+      #   uses: JasonEtco/create-an-issue@v2
+
+      # - if: success()
+      #   name: Create pr
+      #   id: create-pr
+      #   uses: peter-evans/create-pull-request@v3
+      #   with:
+      #     commit-message: "generate logs for #${{ steps.create-issue.outputs.number }}"
+      #     title: "PR for generate logs"
+      #     reviewers: ${{ github.actor }}
+
+      # - if: success()
+      #   name: Merge pr
+      #   run: gh pr merge ${{ steps.create-pr.outputs.pull-request.number }} --merge
+
+      # - if: success()
+      #   name: Close issue
+      #   run: gh issue close ${{ steps.create-issue.outputs.number }}
