@@ -16,8 +16,8 @@ jobs:
 
       - name: Create tag
         run: |
-          echo "$(TZ=Asia/Tokyo date +%Y-%m-%d %H%M%S)" > TAG_NAME
-          echo TAGNAME
+          TZ=Asia/Tokyo date "+%Y-%m-%dT%H:%M:%S > DATE
+          echo ${DATE}
 
       # - name: Create issue
       #   id: create-issue
