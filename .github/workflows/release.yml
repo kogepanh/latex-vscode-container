@@ -22,11 +22,10 @@ jobs:
 
       - name: Create Release
         id: create-release
-        # uses: actions/create-releases@v1
-        # with:
-        #   tag_name: ${{ steps.set-date.outputs.DATE }}
-        #   release_name: Release ${{ steps.set-date.outputs.DATE }}
-        run: echo ${{ steps.set-date.outputs.DATE }}
+        uses: actions/create-releases@v1
+        with:
+          tag_name: ${{ steps.set-date.outputs.DATE }}
+          release_name: Release ${{ steps.set-date.outputs.DATE }}
 
       # - name: Create issue
       #   id: create-issue
