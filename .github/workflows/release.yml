@@ -16,7 +16,7 @@ jobs:
 
       - name: Create tag
         run: |
-          TZ=Asia/Tokyo date "+%Y-%m-%dT%H:%M:%S > DATE
+          DATE = 'TZ=Asia/Tokyo date "+%Y-%m-%dT%H:%M:%S'
           echo ${DATE}
 
       # - name: Create issue
