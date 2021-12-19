@@ -17,7 +17,7 @@ jobs:
       - name: Set DATE
         id: set-date
         run: |
-          DATE=`TZ=Asia/Tokyo date "+%Y%m%dT%H%M%S"`
+          DATE=`TZ=Asia/Tokyo date "+%Y-%m-%dT%H%M"`
           echo "::set-output name=DATE::$DATE"
 
       - name: Create Release
@@ -26,24 +26,3 @@ jobs:
         with:
           tag_name: ${{ steps.set-date.outputs.DATE }}
           release_name: ${{ steps.set-date.outputs.DATE }}
-
-      # - name: Create issue
-      #   id: create-issue
-      #   uses: JasonEtco/create-an-issue@v2
-
-      # - if: success()
-      #   name: Create pr
-      #   id: create-pr
-      #   uses: peter-evans/create-pull-request@v3
-      #   with:
-      #     commit-message: "generate logs for #${{ steps.create-issue.outputs.number }}"
-      #     title: "PR for generate logs"
-      #     reviewers: ${{ github.actor }}
-
-      # - if: success()
-      #   name: Merge pr
-      #   run: gh pr merge ${{ steps.create-pr.outputs.pull-request.number }} --merge
-
-      # - if: success()
-      #   name: Close issue
-      #   run: gh issue close ${{ steps.create-issue.outputs.number }}

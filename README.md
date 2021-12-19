@@ -58,6 +58,27 @@
 
 ## Options
 
+### 複数プロジェクトを共存させたい人向け
+
+ディレクトリを複数作成すればよいです。本サンプルでは `src` ディレクトリのみが存在していますが、以下のようにフォルダ名を変更しても問題なく動きます。
+
+```txt
+.
+├── .devcontainer
+├── .gitignore
+├── .vscode
+├── project1
+│   ├── img
+│   ├── resume.tex
+│   ├── style
+│   └── thesis.tex
+└── project2
+    ├── img
+    ├── resume.tex
+    ├── style
+    └── thesis.tex
+```
+
 ### ホットリロードがウザイ人向け
 
 Tex ファイルが大きくなったきた時など、ホットリロードを止めたい人もいるかと思います。そういう人は `.vscode/settings.json` を以下のように編集してください。
