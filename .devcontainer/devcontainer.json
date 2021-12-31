@@ -1,10 +1,10 @@
 {
   "name": "ubuntu-texlive-ja",
   "dockerComposeFile": "docker-compose.yml",
-  "extensions": [
-    "formulahendry.terminal",
-    "james-yu.latex-workshop"
-  ],
+  "settings": {
+    "files.autoSave": "off"
+  },
+  "extensions": ["formulahendry.terminal", "james-yu.latex-workshop"],
   "service": "ubuntu-texlive-ja",
   "workspaceFolder": "/workdir",
   "shutdownAction": "stopCompose"
