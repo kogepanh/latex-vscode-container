@@ -4,6 +4,7 @@
 %   Style File for Graduate Thesis             			       %
 %   at Network Information Systems Laboratory, Doshisha Univ.  %
 %--------------------------------------------------------------%
+%   Rev. 0.5.1 2022/02/10, Author: Kohei Hosono                %
 %   Rev. 0.5.0 2021/09/22, Author: Kohei Hosono                %
 %   Rev. 0.4.6 2009/01/19, Author: Tomoaki Matsushita		   %
 %   Rev. 0.4.5 2009/01/19, Author: Kenta Ueda	       		   %
@@ -39,20 +40,22 @@
 \renewcommand\maketitle{
   \thispagestyle{empty} % ページ番号，ヘッダ，フッタをつけない
   \begin{center}
-    \vspace*{10mm}
+    \vspace*{6mm}
 
-    \ifnum \@type=1 {\huge 卒業論文} \fi
-    \ifnum \@type=2 {\huge 修士論文} \fi \\ \vspace{32mm}
+    \ifnum \@type=1 {\LARGE 卒業論文} \fi
+    \ifnum \@type=2 {\LARGE 修士論文} \fi \\ \vspace{32mm}
 
     \begin{spacing}{1.6}
-      {\huge \@title} \\
-      {\LARGE \@etitle} \\ \vspace{50mm}
+      {\LARGE \@title} \\ \vspace{3mm}
+    \end{spacing}
+    \begin{spacing}{1.4}
+      {\Large \@etitle} \\ \vspace{50mm}
     \end{spacing}
 
-    {\Large \@university \hspace{0.5zw} \@department} \\ \vspace{2mm}
-    {\Large \@entryyear 年度 \@studentnumber 番} \\ \vspace{3mm}
+    {\large \@university \hspace{0.2pc} \@department} \\ \vspace{2mm}
+    {\large \@entryyear 年度 \@studentnumber 番} \\ \vspace{3mm}
 
-    {\huge \@author} \\ \vspace{16mm}
+    {\LARGE \@author} \\ \vspace{16mm}
     {\large 指導教員} \\ \vspace{2mm}
     {\large \@department} \\
     {\large \@lab} \\ \vspace{3mm}
